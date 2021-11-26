@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>edu.aygo.roundrobin</groupId>
-    <artifactId>APP-LB-RoundRobin</artifactId>
+    <groupId>eci.demo.rappipay</groupId>
+    <artifactId>Front-LoadBalancer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -21,6 +21,16 @@
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-s3</artifactId>
+            <version>1.11.533</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -75,7 +85,7 @@
                             </descriptorRefs>
                             <archive>
                                 <manifest>
-                                    <mainClass>eci.aygo.load.BalanceApplication</mainClass>
+                                    <mainClass>eci.demo.rappipay.Application</mainClass>
                                 </manifest>
                             </archive>
                         </configuration>
