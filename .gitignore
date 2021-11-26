@@ -40,11 +40,14 @@ secrets.env
 .idea/
 *.iml
 
+#
+
 # Eclipse files
 .project
 .classpath
 .settings
 .target/
+.generateFiles/
 
 # vim
 [._]*.s[a-w][a-z]
