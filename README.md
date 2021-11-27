@@ -1,55 +1,27 @@
-# S3-to-DynamoDB importer
+# Proyecto Demo: Generación de extractos Rappipay.
+Es la billetera virtual de Rappi en alianza con Davivienda, con la que puedes disfrutar la nueva forma de administrar y controlar tu dinero de manera segura, sin papeleos, 100% digital y todo desde una misma App📲. RappiPay vive dentro de la aplicación Rappi que está disponible en App Store y Google Play.
 
-The Amazon DynamoDB importer automatically imports a JSON array from an S3 object into Amazon DynamoDB.
+## Problema
+La generación de extractos para los diferentes productos financieros es tardada, se tarda casi una hora por extracto procesados en paralelo. Se necesitan 10 horas para generar 50 mil extractos.
+### Cuando se da por solucionado
+Cuando se logre generar 50 mil extractos por hora con cero errores. Esto representa una reducción del 80% en el tiempo de procesamiento respecto al proceso actual.
+### Periodo de medición: 
+Mensual para todos los países
 
-Important: this application uses various AWS services and there are costs associated with these services after the Free Tier usage - please see the [AWS Pricing page](https://aws.amazon.com/pricing/) for details. You are responsible for any AWS costs incurred. No warranty is implied in this example.
+## Dominio y linea destino de arquitectura.
+Para el proyecto se realizo la definicion del problema, el alcance y las identificacion base de arquitecturas de Rappipay. 
+Las siguientes imagenes muestran las arquitecturas base definidas.
+### Linea base: Conceptos de información
+![img.png](imagenes/img.png)
 
-To learn more about how this application works, see the article on the AWS Compute Blog: https://aws.amazon.com/blogs/compute/creating-a-scalable-serverless-import-process-for-amazon-dynamodb/.
+### Linea base: Mapa de aplicaciones
+![img_1.png](imagenes/img_1.png)
 
-See a video of how to use this repo at: https://youtu.be/f0sE_dNrimU.
+### Linea destino: Mapa de aplicaciones 
+![img_2.png](imagenes/img_2.png)
 
+## Arquitectura Demo.
 
-## Requirements
+### Prerequisitos e implementación.
 
-* AWS CLI already configured with Administrator permission
-* AWS SAM CLI
-* [NodeJS 12.x installed](https://nodejs.org/en/download/)
-
-## Installation Instructions
-
-1. [Create an AWS account](https://portal.aws.amazon.com/gp/aws/developer/registration/index.html) if you do not already have one and login.
-
-1. Clone the repo onto your local development machine using `git clone`.
-
-1. From the command line, then run:
-```
-sam build
-sam deploy --guided
-```
-Follow the prompts in the deploy process to set the stack name, AWS Region and other parameters.
-
-## Parameter Details
-
-* InputBucketName: the unique name of a new S3 bucket for this application (bucket names must be lowercase only and globally unique across AWS).
-
-## How it works
-
-* Upload a file (a JSON array) ending with .json to the target S3 bucket. Please note that the JSON file must contain a JSON array, so the format looks like this:
-
-```
-[
-  {
-    "name": "Alice",
-    "job": "Solutions Architect"
-  },
-  {
-    "name": "Bob",
-    "job": "Cloud Engineer"
-  }
-]
-```
-
-* After a few seconds you will see the contents imported into a DynamoDB table created by the SAM deploment.
-* This process uses on-demand provisioning in DynamoDB.
-
-
+### Evidencias.

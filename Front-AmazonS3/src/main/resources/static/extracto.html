@@ -21,7 +21,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container px-lg-5">
     <a class="navbar-brand" href="#!">Rappi Pay</a>
-    <label for="contractid" class="text-white">Num. Contrato:  </label>
+    <label for="contractid" class="text-white">Contrato:  </label>
     <output type="text" class="text-white" id="contractid"> 1018488905 </output>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -40,24 +40,23 @@
         <h1 class="display-5 fw-bold">Extractos bancarios</h1>
         <p class="fs-4">El extracto bancario es un documento que te brinda información acerca de las operaciones y movimientos de tus productos financieros.
           En este documento están reflejados los gastos e ingresos de dinero a tus productos en un período determinado.</p>
-        <a class="btn btn-primary btn-lg" onclick="extracto.getExtractos()">Ver</a>
+        <a class="btn btn-primary btn-lg" id="btsee" onclick="extracto.getExtractos()">Ver</a>
       </div>
     </div>
   </div>
 </header>
 <!-- Page Content-->
 <section class="pt-4" id="section0">
-  <div class="container px-lg-4" >
+  <div class="container px-lg-5" >
     <!-- Page Features-->
-    <div class="row gx-lg-4">
-      <div class="col-lg-9 col-xxl-10 mb-5">
-        <table class="table thead-dark" id="pdfs">
-          <thead>
+    <div class="row gx-lg-5">
+      <div>
+        <table class="table table-hover" style='font-size:120%' id="pdfs">
+          <thead class="thead-dark" >
             <tr>
-              <th>Número</th>
-              <th>Fecha de creación</th>
-              <th>Descargar PDF</th>
-              <td><a class="btn btn-primary" id="bt0" onclick="extracto.downloadpdf(id)">Descargar PDF</a></td>
+              <th class="table-warning">Número</th>
+              <th class="table-warning">Fecha de creación</th>
+              <th class="table-warning">Archivo</th>
             </tr>
           </thead>
         </table>

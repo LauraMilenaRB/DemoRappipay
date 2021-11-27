@@ -1,20 +1,22 @@
 package eci.demo.rappipay.entities;
 
-import java.io.File;
 import java.util.Date;
 
 public class Extracto {
+
     private Integer id =null;
-    private Date date=null;
-    private File pdf=null;
+    private String name=null;
+    private String date=null;
+    private byte[] pdf=null;
 
     public Extracto() {
     }
 
-    public Extracto(Integer id, Date date, File pdf) {
+    public Extracto(Integer id,String name, String date, byte[] pdf) {
         this.id=id;
         this.date=date;
         this.pdf=pdf;
+        this.name=name;
     }
 
     public Integer getId() {
@@ -25,19 +27,23 @@ public class Extracto {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public File getPdf() {
+    public byte[] getPdf() {
         return pdf;
     }
 
-    public void setPdf(File pdf) {
+    public void setPdf(byte[] pdf) {
         this.pdf = pdf;
     }
+
+    public String getName() {return name;}
+
+    public void setName(String name) {this.name = name;}
 }

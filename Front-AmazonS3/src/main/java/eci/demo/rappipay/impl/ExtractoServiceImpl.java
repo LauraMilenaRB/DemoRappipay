@@ -11,6 +11,7 @@ import com.amazonaws.services.s3.model.*;
 import eci.demo.rappipay.entities.Extracto;
 import eci.demo.rappipay.services.ExtractoService;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +19,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.Files;
 
 @Service
 public class ExtractoServiceImpl implements ExtractoService {
@@ -46,13 +50,16 @@ public class ExtractoServiceImpl implements ExtractoService {
                 String folderFilename = summary.getKey();
                 String[] file = folderFilename.split("\\/");
                 if (file.length > 1) {
-                    String dateString= file[1].split("-")[1];
-                    Date date=new SimpleDateFormat("yyyyMMdd").parse(dateString);
+                    String dateString= file[1].split("-")[1].split("\\.")[0];
+                    SimpleDateFormat newDateFormat = new SimpleDateFormat("yyyyMMdd");
+                    Date myDate = newDateFormat.parse(dateString);
+                    newDateFormat.applyPattern("yyyy-MM-dd");
+                    String myDateString = newDateFormat.format(myDate);
                     S3Object s3object = s3client.getObject(bucketName, summary.getKey());
                     S3ObjectInputStream inputStream = s3object.getObjectContent();
-                    File newFile= new File("src/main/resources/static/generateFiles/" + file[1]);
-                    FileUtils.copyInputStreamToFile(inputStream, newFile);
-                    listExtractos.add(new Extracto(id,date,newFile));
+                    //File newFile= new File("src/main/resources/static/generateFiles/" + file[1]);
+                    //FileUtils.copyInputStreamToFile(inputStream, newFile);
+                    listExtractos.add(new Extracto(id,file[1],myDateString, IOUtils.toByteArray(inputStream)));
                     id+=1;
                 }
             }

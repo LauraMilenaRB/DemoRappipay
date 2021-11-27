@@ -18,9 +18,8 @@ public class ExtractoController {
     @RequestMapping(value="/extractos")
     public ResponseEntity<ArrayList<Extracto>> getExtractos(@RequestBody Integer contratoId) {
         try {
-
             ArrayList<Extracto> result=extractoService.getExtractos(contratoId);
-            System.out.println("pruebaresultado"+result.get(0).getPdf());
+            //System.out.println("pruebaresultado"+result.get(0).getPdf());
             return new ResponseEntity<>(result, HttpStatus.ACCEPTED);
         } catch (Exception ex) {
             ex.printStackTrace();

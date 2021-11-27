@@ -1,10 +1,16 @@
 version: '3'
 services:
+    frontawsS3:
+        build:
+            context: ./Front-AmazonS3
+            dockerfile: Dockerfile
+        container_name: frontawsS3
+        ports:
+            - 80:80
     my_mongo:
         image: mongo
         ports:
-            - 27019:27017
-
+            - 27017:27017
     mongo_seeder:
         image: mongo_seeder
         depends_on:
