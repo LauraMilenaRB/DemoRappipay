@@ -1,47 +1,63 @@
 $(document).ready(function(){
     document.getElementById('section0').style.display = 'none';
 });
-
 var extracto=(function () {
     var map = new Map();
+    var s3 ;
+    const myBucket = 'demo-rappipay-s3'
 
-    //data is the base64 encoded string
-    function base64ToArrayBuffer(id) {
-        if(map!=null){
-            var binaryString = window.atob(map.get(id));
-            var binaryLen = binaryString.length;
-            var bytes = new Uint8Array(binaryLen);
-            for (var i = 0; i < binaryLen; i++) {
-                var ascii = binaryString.charCodeAt(i);
-                bytes[i] = ascii;
-            }
-            var blob = new Blob([bytes], {type: "application/pdf"});
-            var link = window.URL.createObjectURL(blob);
-            window.open(link,'', 'height=650,width=840');
-        }
+    function base64ToArrayBuffer(keyPDF) {
+        var bucketParams = {
+            Bucket : myBucket,
+            Key: keyPDF
+        };
+
+        var promise = s3.getSignedUrlPromise('getObject', bucketParams);
+        promise.then(function(url) {
+           window.open(url,'', 'height=650,width=840');
+        }, function(err) {
+            alert("Error", err);
+        });
     }
 
 	function addRow(item) {
         var markup = "<tr class=\"rowTable\"><td>" + item.id + "</td><td>" + item.date + "</td>"
-        + "<td><a class=\"btn-check:checked\" id=\"extracto-"+item.date+"\" onclick=\"extracto.downloadpdf(id)\">Descargar PDF</a></td></tr>";
+        + "<td><a class=\"btn-check:checked\" id=\""+item.keyPDF+"\" onclick=\"extracto.downloadpdf(id)\">Descargar PDF</a></td></tr>";
         $("#pdfs").append(markup);
-        map.set("extracto-"+item.date,item.pdf);
 
+    }
+    function successS3Object(listS3,contratoId){
+        var list = [];
+        var listS3=listS3.filter(x => x.Size!=0);
+        var idnum=1;
+        listS3.map(x => list.push({"id":idnum++,"date":x.LastModified, "keyPDF": x.Key}))
+        return list;
     }
 
     function getextracto(){
-        var contracto = document.getElementById('contractid').value
-        if(contracto===""){
+        var contract = document.getElementById('contractid').value
+        if(contract===""){
             alert("contrato invalido");
         }
         else{
-            var promise = clientExtracto.getExtractos(contracto);
-            promise.done(function(data){
+            AWS.config.update({accessKeyId: 'AKIAVFHJMDPBUAIK7CEO',
+                                secretAccessKey: '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',
+                                region: 'us-east-1'
+            })
+            s3 = new AWS.S3()
+            var bucketParams = {
+                Bucket : myBucket,
+                Prefix: contract.trim().concat('/')
+            };
+            s3.listObjectsV2(bucketParams, function(err, data) {
+              if (err) {
+                alert("Error", err);
+              } else {
                 $(".rowTable").remove();
-
-                data.map(addRow);
-            }).fail(function(){
-                alert(promise.responseText);
+                if(data.Contents.length>1){
+                    successS3Object(data.Contents,contract).map(addRow);
+                }
+              }
             });
         }
     }
