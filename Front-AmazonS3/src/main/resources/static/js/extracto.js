@@ -21,7 +21,7 @@ var extracto=(function () {
     }
 
 	function addRow(item) {
-        var markup = "<tr class=\"rowTable\"><td>" + item.id + "</td><td>" + item.date.replace(" (hora estándar de Colombia)","") + "</td>"
+        var markup = "<tr class=\"rowTable\"><td>" + item.id + "</td><td>" + item.date + "</td>"
         + "<td><a class=\"btn-check:checked\" id=\""+item.keyPDF+"\" onclick=\"extracto.downloadpdf(id)\">Descargar PDF</a></td></tr>";
         $("#pdfs").append(markup);
 
@@ -30,7 +30,7 @@ var extracto=(function () {
         var list = [];
         var listS3=listS3.filter(x => x.Size!=0);
         var idnum=1;
-        listS3.map(x => list.push({"id":idnum++,"date":x.LastModified, "keyPDF": x.Key}))
+        listS3.map(x => list.push({"id":idnum++,"date":x.LastModified.toString().replace(" (hora estándar de Colombia)",""), "keyPDF": x.Key}))
         return list;
     }
 
