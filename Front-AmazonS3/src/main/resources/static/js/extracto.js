@@ -30,7 +30,7 @@ var extracto=(function () {
         var list = [];
         var listS3=listS3.filter(x => x.Size!=0);
         var idnum=1;
-        listS3.map(x => list.push({"id":idnum++,"date":x.LastModified, "keyPDF": x.Key}))
+        listS3.map(x => list.push({"id":idnum++,"date":x.LastModified.replace(" (hora estándar de Colombia)",""), "keyPDF": x.Key}))
         return list;
     }
 
