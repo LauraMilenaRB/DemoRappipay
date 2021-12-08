@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        @font-face {
+        font-family: 'Poppins';
+        src: url(fonts/PoppinsRegular.ttf);
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'Poppins';
+        src: url(fonts/PoppinsSemiBold.ttf);
+        font-weight: bold;
+        font-style: normal;
+    }
+        @page {
+            margin: 25px;
+            size: 600px auto;
+        }
+
+        table.fixed {
+            table-layout: fixed;
+        }
+
+        th.fixed, td.fixed {
+            width: 150px;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body style="font-family: 'Poppins'">
+    <img src="./template/images/rappicard_logo.png" alt="RappiCard" style="width: 104px; height: auto;"/>
+    <h1>Extracto</h1>
+    Rappi S.A.S<br />
+    Tarjeta de Credito<br />
+
+    <table align="center">
+        <tr class="table">
+            <td>
+                <h3>Detalle del Contrato:</h3>
+                Nombre: {{ statement.contract.name }}<br/>
+                Email: {{ statement.contract.email }}<br/>
+                Identificación: {{ statement.contract.identification }}<br/>
+                Tipo: {{statement.contract.card_type}} <br/>
+                Ultimos digitos Digital: {{statement.contract.last_digits_digital}} <br/>
+                Ultimos digitos Fisica: {{statement.contract.last_digits_physical}} <br/>
+            </td>
+            <td style="padding-left: 30px">
+                <h3>Cupo:</h3>
+                Total: {{statement.contract.balance}} <br/>
+                Usado: {{statement.contract.used_balance}} <br/>
+                Disponible: {{statement.contract.available_balance}} <br/>
+
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <table align="center">
+        <tr class="table">
+            <td class="table">
+                <h3>Detalle del Cashback</h3>
+                Cashback anterior: {{statement.rewards.before_balance}} <br/>
+                Cashback acumulado: {{statement.rewards.accumulated_balance}} <br/>
+                Cashback redimido: {{statement.rewards.redeem_balance}} <br/>
+                Carhback actual: {{statement.rewards.balance}}<br/>
+            </td>
+            <td style="padding-left: 30px">
+                <h3>Pago total:</h3>
+                Monto: {{statement.payment.total}}  <br/>
+            </td>
+            <td style="padding-left: 30px">
+                <h3>Pago minimo:</h3>
+                Monto: {{statement.payment.minimum}} <br/>
+                Intereses: {{statement.payment.minimum_interest}} <br/>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3>Movimientos:</h3>
+    <table class="fixed">
+        <thead>
+            <tr>
+                <th class="fixed">Tipo</th>
+                <th class="fixed">Monto</th>
+                <th class="fixed">Cuotas</th>
+                <th class="fixed">Comercio</th>
+                <th class="fixed">Fecha</th>
+            </tr>
+        </thead>
+         {% for movement in movements %}
+        <tr>
+            <td class="fixed"> {{movement.type}}</td>
+            <td class="fixed"> {{movement.amount}}</td>
+            <td class="fixed"> {{movement.installments}}</td>
+            <td class="fixed"> {{movement.store_name}}</td>
+            <td class="fixed"> {{movement.created_at}}</td>
+        </tr>
+         {% endfor %}
+    </table>
+    <div style="padding-top: 20px">
+        <p>Paga tu RappiCard facilmente desde tu cuenta RappiPay o PSE ingresando desde tu app </p>
+        <p><strong>Prototipo Grupo 3 - AYGO - ECI</strong></p>
+    </div>
+</body>
+</html>
