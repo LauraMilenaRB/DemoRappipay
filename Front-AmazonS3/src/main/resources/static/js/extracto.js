@@ -4,7 +4,7 @@ $(document).ready(function(){
 var extracto=(function () {
     var map = new Map();
     var s3 ;
-    const myBucket = 'aygo-prototype'
+    const myBucket = 'demo-rappipay-s3'
 
     function base64ToArrayBuffer(keyPDF) {
         var bucketParams = {
