@@ -1,6 +1,7 @@
 # Proyecto Demo: Generación de extractos Rappipay
 Es la billetera virtual de Rappi en alianza con Davivienda, con la que puedes disfrutar la nueva forma de administrar y controlar tu dinero de manera segura, sin papeleos, 100% digital y todo desde una misma App📲. RappiPay vive dentro de la aplicación Rappi que está disponible en App Store y Google Play.
 
+**APP Amplify:** https://main.d18r3h05m1zwek.amplifyapp.com/
 ## Problema
 La generación de extractos para los diferentes productos financieros es tardada, se tarda casi una hora por extracto procesados en paralelo. Se necesitan 10 horas para generar 50 mil extractos.
 ### Cuando se da por solucionado
