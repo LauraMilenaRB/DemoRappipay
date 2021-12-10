@@ -41,7 +41,7 @@ var extracto=(function () {
         }
         else{
             AWS.config.update({accessKeyId: 'AKIAVFHJMDPBUAIK7CEO',
-                                secretAccessKey: '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'
+                                secretAccessKey: 'zt9D0XyQ2sQWCpRezhvLnwqNAbUOSf1KGh8vziDG',
                                 region: 'us-east-1'
             })
             s3 = new AWS.S3()
