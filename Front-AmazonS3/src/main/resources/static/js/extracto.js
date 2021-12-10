@@ -40,7 +40,7 @@ var extracto=(function () {
             alert("contrato invalido");
         }
         else{
-            AWS.config.update({accessKeyId: 'AKIAVFHJMDPBUAIK7CEO'
+            AWS.config.update({accessKeyId: 'AKIAVFHJMDPBUAIK7CEO',
                                 secretAccessKey: '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'
                                 region: 'us-east-1'
             })
