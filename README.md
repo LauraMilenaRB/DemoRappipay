@@ -12,12 +12,16 @@ Mensual para todos los países
 Para el proyecto se realizo la definicion del problema, el alcance y la identificacion base de arquitecturas de Rappipay. 
 Las siguientes imagenes muestran las arquitecturas base definidas.
 ### Linea base: Conceptos de información
+En la siguiente diagrama tenemos los conceptos de información relacionados al alcance del proyecto, estos conceptos son los requeridos para generar los extractos de los clientes.
+Contienen informacion del contrato, rewards, detalles de movimientos, caschback e informacion adicional reqeurida.
 ![img_13.png](imagenes/img_13.png)
 
 ### Linea base: Mapa de aplicaciones
+En el siguiente diagrama tenemos la arquitectura de aplicaciones actual que soporta el proceso de generacion de extractos y en el cual tenemos los problemas mencionados.
 ![img_10.png](imagenes/img_10.png)
 
 ### Linea destino: Mapa de aplicaciones 
+En el siguiente diagrama tenemos la arquitectura de aplicaciones al que queremos llegar a implementar y tiene muchos de los servicios que se utilizaron en el prototipo.
 ![img_11.png](imagenes/img_11.png)
 
 ## Arquitectura del prototipo
