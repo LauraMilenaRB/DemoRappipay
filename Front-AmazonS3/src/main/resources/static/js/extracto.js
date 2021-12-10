@@ -40,8 +40,8 @@ var extracto=(function () {
             alert("contrato invalido");
         }
         else{
-            AWS.config.update({accessKeyId: 'AKIAUGETR7TEV77ELSJT',//Lau: AKIAVFHJMDPBUAIK7CEO
-                                secretAccessKey: '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',//Lau: zt9D0XyQ2sQWCpRezhvLnwqNAbUOSf1KGh8vziDG
+            AWS.config.update({accessKeyId: 'AKIAVFHJMDPBUAIK7CEO'
+                                secretAccessKey: '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'
                                 region: 'us-east-1'
             })
             s3 = new AWS.S3()

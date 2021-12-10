@@ -6,7 +6,7 @@ import jinja2
 from pymongo import MongoClient
 from weasyprint import HTML
 
-connection_string = 'mongodb://aygo:Prototype2021$@docdb-2021-11-28-22-06-27.cluster-cl9erysdj8fz.us-east-1.docdb.amazonaws.com:27017/admin' \
+connection_string = 'mongodb://aygo:Prototype2021$@host:27017/admin' \
                     '?authSource=admin&readPreference=primary&appname=MongoDB%20Compass' \
                     '&directConnection=true&ssl=false&retryWrites=false'
 client = MongoClient(connection_string)
