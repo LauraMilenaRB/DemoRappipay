@@ -40,8 +40,8 @@ var extracto=(function () {
             alert("contrato invalido");
         }
         else{
-            AWS.config.update({accessKeyId: 'AKIAVFHJMDPBUAIK7CEO',
-                                secretAccessKey: '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',
+            AWS.config.update({accessKeyId: '',
+                                secretAccessKey: '',
                                 region: 'us-east-1'
             })
             s3 = new AWS.S3()
